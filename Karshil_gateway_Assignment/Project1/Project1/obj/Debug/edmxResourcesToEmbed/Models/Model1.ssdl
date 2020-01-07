@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DBProduct_mgmtModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="cat_id" />
+    </Key>
+    <Property Name="cat_id" Type="int" Nullable="false" />
+    <Property Name="cat_name" Type="nchar" MaxLength="50" Nullable="false" />
+    <Property Name="cat_image" Type="varchar(max)" Nullable="false" />
+    <Property Name="cat_fk_ad" Type="int" Nullable="false" />
+    <Property Name="cat_status" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="pro_id" />
+    </Key>
+    <Property Name="pro_id" Type="int" Nullable="false" />
+    <Property Name="pro_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="pro_image" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="pro_des" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="pro_price" Type="int" Nullable="false" />
+    <Property Name="pro_fk_cat" Type="int" Nullable="false" />
+    <Property Name="pro_fk_user" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_admin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="admin_username" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="admin_password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="u_id" />
+    </Key>
+    <Property Name="u_id" Type="int" Nullable="false" />
+    <Property Name="u_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_image" Type="varchar(max)" Nullable="false" />
+    <Property Name="u_email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="u_contact" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__Category__cat_fk__4D94879B">
+    <End Role="tbl_admin" Type="Self.tbl_admin" Multiplicity="1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_admin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="cat_fk_ad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__pro_fk___4AB81AF0">
+    <End Role="tbl_user" Type="Self.tbl_user" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_user">
+        <PropertyRef Name="u_id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="pro_fk_user" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Product__pro_fk___5165187F">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="cat_id" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="pro_fk_cat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBProduct_mgmtModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_admin" EntityType="Self.tbl_admin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Category__cat_fk__4D94879B" Association="Self.FK__Category__cat_fk__4D94879B">
+      <End Role="tbl_admin" EntitySet="tbl_admin" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__pro_fk___4AB81AF0" Association="Self.FK__Product__pro_fk___4AB81AF0">
+      <End Role="tbl_user" EntitySet="tbl_user" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Product__pro_fk___5165187F" Association="Self.FK__Product__pro_fk___5165187F">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

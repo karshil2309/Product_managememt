@@ -1,0 +1,212 @@
+﻿@model Project1.Models.tbl_admin
+@{
+    ViewBag.Title = "login";
+}
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial;
+            border: 0;
+            
+            
+        }
+
+        body {
+           
+            
+            background-image: url('../../Content/img/1.jpg');
+            height: 100vh;
+            background-size: cover;
+            background-position: center;
+        }
+
+        ul {
+            list-style-type: none;
+            float: right;
+            margin-top: 25px;
+        }
+
+            ul li {
+                display: inline-block;
+            }
+
+                ul li a {
+                    text-decoration: none;
+                    color: #fff;
+                    padding: 5px 20px;
+                    border: 1px solid transparent;
+                    transition: 0.6s ease;
+                }
+
+                    ul li a:hover {
+                        background-color: #fff;
+                        color: #000;
+                    }
+
+                ul li.active a {
+                    background-color: #fff;
+                    color: #000;
+                }
+
+        #map {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        .logo img {
+            float: left;
+            width: 150px;
+            height: auto;
+        }
+
+        .main {
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .title {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50% -50%);
+        }
+
+            .title h1 {
+                color: #fff;
+                font-size: 70px;
+            }
+
+        .box {
+            width: 320px;
+            height: 380px;
+            background-color: #000000b3;
+            color: #fff;
+            position: absolute;
+            transform: translate( -50%, -50%);
+            left: 50%;
+            top: 50%;
+            padding: 70px 30px;
+            box-sizing: border-box;
+            border-radius: 10px;
+        }
+
+        h1 {
+            margin: 0;
+            padding: 0 0 20px;
+            text-align: center;
+            font-size: 22px;
+        }
+
+        .butto {
+            position: absolute;
+            top: 68%;
+            left: 50%;
+            transform: translate(-50% -50%);
+        }
+
+        .btn {
+            border: 1px solid #fff;
+            padding: 10px 30px;
+            color: #fff;
+            text-decoration: none;
+            transition: 0.4s ease;
+        }
+
+            .btn:hover {
+                background-color: #fff;
+                color: #000;
+            }
+
+        .box input {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+            .box input[type="text"], input[type="password"], input[type="email"] {
+                border: none;
+                border-bottom: 1px solid #fff;
+                background-color: transparent;
+                outline: none;
+                height: 40px;
+                color: #fff;
+                font-size: 16px;
+            }
+
+            .box input[type="submit"] {
+                border: none;
+                outline: none;
+                height: 40px;
+                background-color: #490001;
+                color: #fff;
+                font-size: 18px;
+                border-radius: 20px;
+            }
+
+                .box input[type="submit"]:hover {
+                    cursor: pointer;
+                    background-color: #fff;
+                    color: #000;
+                }
+
+        .box a {
+            text-decoration: none;
+            font-size: 12px;
+            line-height: 20px;
+            color: darkgrey;
+            transition: 0.4s ease;
+        }
+
+            .box a:hover {
+                color: #fff;
+            }
+
+        .home {
+            position: absolute;
+            bottom: 5%;
+            left: 80%;
+            transform: translate(-50% -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1> Login Here</h1>
+        @using (Html.BeginForm())
+        {
+            <form>
+
+
+                @Html.TextBoxFor(x => x.admin_username, new { @placeholder = "Enter your Username" })
+                <span style="color:red">@Html.ValidationMessageFor(x => x.admin_username)</span>
+
+                @Html.PasswordFor(x => x.admin_password, new { @placeholder = "Enter your Password" })
+                <span style="color:red">@Html.ValidationMessageFor(x => x.admin_password)</span>
+
+
+                <input type="submit" name=" " value="Login">
+                <a href="#">Forgot password</a>
+
+                <p style="color:red">@ViewBag.error</p>
+            </form>
+        }
+    </div>
+   
+</body>
+</html>
+
+<script src="~/Scripts/jquery.validate-vsdoc.js"></script> 
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+@section Scripts{
+
+    @Scripts.Render("~/bundles/jqueryval ")
+}

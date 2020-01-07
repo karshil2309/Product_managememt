@@ -1,0 +1,95 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hide/show menu</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        #sidebar {
+            position: fixed;
+            width: 200px;
+            height: 100%;
+            background: #FFF;
+            left: -200px;
+            transition: all 500ms linear;
+        }
+
+            #sidebar.active {
+                left: 0px;
+            }
+
+            #sidebar ul li {
+                color: rgba(230,230,230,0.9);
+                list-style: none;
+                padding: 15px 10px;
+                border-bottom: 1px solid rgba(100,100,100,0.3);
+            }
+
+            #sidebar .toggle-btn {
+                position: absolute;
+                left: 230px;
+                top: 20px;
+                color:powderblue;
+            }
+
+                #sidebar .toggle-btn span {
+                    display: block;
+                    width: 30px;
+                    height: 5px;
+                    background: #151719;
+                    margin: 5px 0px;
+                }
+        span {
+            
+            color:blue;
+            font-family:'Times New Roman', Times, serif;
+            font-size:medium;
+            text-align:center;
+                    
+        }
+        body{
+            background-image: url('../../Content/img/2.jpg');
+
+        }
+    </style>
+    <script type="text/javascript">
+        function toggleSidebar() {
+            document.getElementById("sidebar").classList.toggle('active');
+        }
+    </script>
+</head>
+<body>
+   
+    <h1>
+    <span>
+        Welcome 
+       @Session["admin_username"]
+    </span>
+        </h1>
+
+    <div id="sidebar">
+        <div class="toggle-btn" onclick="toggleSidebar()">
+            <a>
+                <span></span>
+                <span></span>
+                <span></span>
+            </a>
+        </div>
+        <ul>
+            <li>@Html.ActionLink("Product List", "Index", "User", null, new { @class = "ht" })</li>
+            <li>@Html.ActionLink("Add Product", "Create", "Admin", null, new { @class = "ht" })</li>
+            <li>@Html.ActionLink("Login User", "login", "User", null, new { @class = "ht" })</li>
+        </ul>
+    </div>
+</body>
+</html>
+

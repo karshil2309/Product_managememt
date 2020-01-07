@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="11f82c3a352842bda33e73991211a1a2" Name="Diagram1">
+        <EntityTypeShape EntityType="DBProduct_mgmtModel.Category" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProduct_mgmtModel.Product" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProduct_mgmtModel.tbl_admin" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DBProduct_mgmtModel.tbl_user" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="DBProduct_mgmtModel.FK__Category__cat_fk__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProduct_mgmtModel.FK__Product__pro_fk___5165187F" ManuallyRouted="false" />
+        <AssociationConnector Association="DBProduct_mgmtModel.FK__Product__pro_fk___4AB81AF0" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
